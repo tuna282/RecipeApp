@@ -1,11 +1,13 @@
 import React from 'react';
 import Recipe from './Recipe';
 
-const Form = ({ storeInput, sendRequest, recipes }) => (
+const Form = ({
+  input, storeInput, sendRequest, recipes,
+}) => (
     <>
       <form className="form">
         <label htmlFor="input"></label>
-        <input onChange={storeInput} type="text" id="input"/>
+        <input onChange={storeInput} type="text" id="input" value={input}/>
         <button onClick={sendRequest} className="submit-btn">Search</button>
       </form>
       <div className="recipes">
