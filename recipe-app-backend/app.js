@@ -14,7 +14,7 @@ const appKey = 'b8a4eabf90998bdce5d6893935275a50';
 
 app.get('/search', (req, res) => {
   if(req.query.query) {
-    request(`https://api.edamam.com/search?q=${req.query.query}&app_id=${appId}&app_key=${appKey}&from=${((req.query.page - 1) * 10).toString()}&to=${(req.query.page * 10).toString()}&calories=591-722&health=alcohol-free`, (error, response, body) => {
+    request(`https://api.edamam.com/search?q=${req.query.query}&app_id=${appId}&app_key=${appKey}&from=${req.query.page.toString()}&to=${(req.query.page + 10).toString()}&calories=591-722&health=alcohol-free`, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         res.send(body);
       } else {
