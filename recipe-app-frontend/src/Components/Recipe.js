@@ -9,13 +9,15 @@ const Recipe = ({
     <h2 className="recipe-title">
       {title}
     </h2>
-    <img className="recipe-image" src={image}></img>
-    <h3 className="calories">Calories</h3>
-    <p>{roundedCalories(calories)}</p>
-    <h3 className="ingredients">Ingredients</h3>
-    <p className="recipe-ingredients">
-      {ingredients.map(ingredient => ` ${ingredient}, `)}
-    </p>
+    <div className="recipe-details">
+      <img className="recipe-image" src={image}></img>
+      <h3 className="calories">Calories</h3>
+      <p>{roundedCalories(calories)}</p>
+      <h3 className="ingredients">Ingredients</h3>
+      <p className="recipe-ingredients">
+        {ingredients.map(ingredient => ` ${ingredient}, `)}
+      </p>
+    </div>
   </div>
   );
 };
