@@ -1,1 +1,6 @@
-{ "extends": "salt" }
+{ 
+  "extends": "salt",
+  "rules": {
+    "no-else-return": "off"
+  }
+}

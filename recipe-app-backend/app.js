@@ -13,14 +13,17 @@ const appKey = 'b8a4eabf90998bdce5d6893935275a50';
 // ex req: `https://api.edamam.com/search?q=chicken&app_id=${app_id}&app_key=${app_key}`
 
 app.get('/search', (req, res) => {
-  request(`https://api.edamam.com/search?q=${req.query.query}&app_id=${appId}&app_key=${appKey}`, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      res.send(body);
-    } else {
-      res.send(error, 'hey error');
-    }
-  });
+  if(req.query.query) {
+    request(`https://api.edamam.com/search?q=${req.query.query}&app_id=${appId}&app_key=${appKey}&from=${((req.query.page - 1) * 10).toString()}&to=${(req.query.page * 10).toString()}`, (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        res.send(body);
+      } else {
+        res.send(error, 'hey error');
+      }
+    });
+  }
 });
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
