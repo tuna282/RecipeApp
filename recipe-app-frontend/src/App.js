@@ -8,7 +8,7 @@ const App = () => {
   const [input, setInput] = useState('');
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
   const [lastPageNumber, setLastPageNumber] = useState(0);
 
   useEffect(() => {
