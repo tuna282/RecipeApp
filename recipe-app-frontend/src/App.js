@@ -10,10 +10,12 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [lastPageNumber, setLastPageNumber] = useState(0);
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // setIsLoading(true);
+    if (search) {
+      setIsLoading(true);
+    }
     axios.get('/search', {
       params: {
         query: search, page: pageNumber, lastPage: lastPageNumber,
@@ -23,10 +25,11 @@ const App = () => {
         if (res.data.more) {
           setRecipes(res.data.hits);
           setLastPageNumber(res.data.count);
-          // setIsLoading(false);
+          setIsLoading(false);
         } else {
           setRecipes([0]);
           setLastPageNumber(-1);
+          setIsLoading(false);
         }
       });
   }, [search, pageNumber]);
@@ -44,13 +47,15 @@ const App = () => {
   return (
     <div className="App">
       <h1>Recipe Finder</h1>
-      <Form input={input} storeInput={storeInput} sendRequest={sendRequest} recipes={recipes}/>
-      <Pagination
+      <Form
+      input={input} storeInput={storeInput} sendRequest={sendRequest}
+      recipes={recipes}/>
+      {!isLoading ? <Pagination
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}
         lastPageNumber={lastPageNumber}
         search={search}
-        />
+        /> : <h2 className="is-loading">Delicious recipes are loading!</h2>}
     </div>
   );
 };
