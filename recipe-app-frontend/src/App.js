@@ -12,9 +12,11 @@ const App = () => {
   const [lastPageNumber, setLastPageNumber] = useState(0);
 
   useEffect(() => {
-    console.log('run');
-    console.log(recipes);
-    axios.get('/search', { params: { query: search, page: pageNumber, lastPage: lastPageNumber } })
+    axios.get('/search', {
+      params: {
+        query: search, page: pageNumber, lastPage: lastPageNumber,
+      },
+    })
       .then(res => {
         setRecipes(res.data.hits);
         setLastPageNumber(res.data.count);
@@ -38,7 +40,9 @@ const App = () => {
       <Pagination
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}
-        lastPageNumber={lastPageNumber}/>
+        lastPageNumber={lastPageNumber}
+        search={search}
+        />
     </div>
   );
 };
