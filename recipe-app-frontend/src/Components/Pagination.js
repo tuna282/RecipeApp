@@ -8,8 +8,8 @@ const Pagination = ({
   if (pageNumber !== 1 && pageNumber !== lastPageNumber) {
     return (
       <div className="pagination">
-        <button onClick={() => fetchNextPage(pageNumber, setPageNumber)} className="next-btn"><a href="#">Next</a></button>
         <button onClick={() => fetchPreviousPage(pageNumber, setPageNumber)} className="prev-btn"><a href="#">Previous</a></button>
+        <button onClick={() => fetchNextPage(pageNumber, setPageNumber)} className="next-btn"><a href="#">Next</a></button>
       </div>
     );
   } else if (pageNumber === 1 && search) {

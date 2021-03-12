@@ -15,7 +15,7 @@ const Recipe = ({
       <p>{roundedCalories(calories)}</p>
       <h3 className="ingredients">Ingredients</h3>
       <p className="recipe-ingredients">
-        {ingredients.map(ingredient => ` ${ingredient}, `)}
+        {ingredients.map(ingredient => `${ingredient}, `)}
       </p>
     </div>
   </div>
