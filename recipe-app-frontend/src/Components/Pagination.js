@@ -12,6 +12,8 @@ const Pagination = ({
         <button onClick={() => fetchNextPage(pageNumber, setPageNumber)} className="next-btn"><a href="#">Next</a></button>
       </div>
     );
+  } else if (lastPageNumber === -1) {
+    return (<></>);
   } else if (pageNumber === 1 && search) {
     return (
       <div className="pagination">

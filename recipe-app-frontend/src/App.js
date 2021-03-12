@@ -10,16 +10,24 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [lastPageNumber, setLastPageNumber] = useState(0);
+  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // setIsLoading(true);
     axios.get('/search', {
       params: {
         query: search, page: pageNumber, lastPage: lastPageNumber,
       },
     })
       .then(res => {
-        setRecipes(res.data.hits);
-        setLastPageNumber(res.data.count);
+        if (res.data.more) {
+          setRecipes(res.data.hits);
+          setLastPageNumber(res.data.count);
+          // setIsLoading(false);
+        } else {
+          setRecipes([0]);
+          setLastPageNumber(-1);
+        }
       });
   }, [search, pageNumber]);
 

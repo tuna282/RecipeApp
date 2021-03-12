@@ -86,4 +86,12 @@ align-items: center;
   margin-left: 15px;
 }
 
+.invalid-input {
+  color: white;
+  background-color: rgb(15, 119, 153);
+  padding: 10px;
+  border-radius: 50px;
+  margin-top: 150px;
+}
+
 
