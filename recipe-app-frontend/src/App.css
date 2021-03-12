@@ -43,7 +43,11 @@ h1 {
   padding: 10px;
   border-radius: 50px;
   box-shadow: 2px 2px 5px white;
+  max-height: 750px;
+}
 
+.recipe-title {
+  max-width: 300px;
 }
 
 .calories {
@@ -57,6 +61,8 @@ h1 {
 
 .recipe-ingredients {
   width: 280px;
+  max-height: 150px;
+  overflow: scroll;
 }
 
 .recipe-details {
